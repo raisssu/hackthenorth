@@ -2,7 +2,7 @@ import React from 'react';
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="bg-gray-800 p-4">
+    <nav className="bg-customGreen p-4">
       <div className="container mx-auto flex justify-between items-center">
         
         {/* Logo */}
@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
 
         {/* Contact Button */}
         <div className="hidden md:flex">
-          <a href="#contact" className="bg-teal-500 text-white px-4 py-2 rounded-full hover:bg-teal-600 italic">Upload</a>
+          <a href="#contact" className="bg-customBeige text-customGreen px-4 py-2 rounded-full hover:bg-customBeige italic">Upload</a>
         </div>
       </div>
     </nav>
