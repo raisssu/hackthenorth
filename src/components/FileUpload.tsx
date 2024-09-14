@@ -20,10 +20,10 @@ const FileUpload: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center bg-customLightGreen h-[250px] justify-center">
+    <div className="flex flex-col items-center bg-customOtherGreen h-[250px] justify-center">
       {/* Bubble effect for form */}
-      <form onSubmit={handleSubmit} className="bg-customMediumLightGreen text-customDarkGreen rounded-2xl shadow-lg p-6 max-w-md w-full">
-        <label htmlFor="file" className="mb-4 text-sm text-customBeige italic">Upload your resume (PDF, Word):</label>
+      <form onSubmit={handleSubmit} className="bg-customLightGreen text-customDarkGreen rounded-2xl shadow-lg p-6 max-w-md w-full">
+        <label htmlFor="file" className="mb-4 text-sm text-customGreen italic">Upload your resume (PDF, Word):</label>
         <input 
           type="file" 
           id="file"

@@ -17,8 +17,8 @@ const App: React.FC = () => {
     <div>
       <Navbar />
       <Hero />
-      <FileUpload />
       <Welcome/>
+      <FileUpload />
     </div>
   );
 }
