@@ -8,7 +8,7 @@ function Welcome() {
         <div className='flex flex-col md:flex-row justify-center items-start gap-6'>
           {/* Left Box: About Us */}
           <div className='flex-1 bg-customBeige text-customDarkGreen rounded-lg shadow-2xl p-6 min-h-[350px]'>
-            <h2 className='text-center font-bold italic text-3xl text-customDarkGreen mb-4'>
+            <h2 className='text-center font-bold text-3xl text-customDarkGreen mb-4'>
               About Us
             </h2>
             <p>
@@ -18,12 +18,12 @@ function Welcome() {
 
           {/* Middle Box: Mission */}
           <div className='flex-1 bg-customBeige text-customDarkGreen rounded-lg shadow-2xl p-6 min-h-[350px]'>
-            <h2 className='text-center font-bold italic text-3xl text-customDarkGreen mb-4'>
+            <h2 className='text-center font-bold text-3xl text-customDarkGreen mb-4'>
               Mission
             </h2>
-            <p>
+            <p className='text-center'>
               <i>Hack the Resume</i> was made to help people around the world
-              <i> hack into the workforce</i>. By scanning your resume, we are able to give you suggestions to
+              <i>hack into the workforce</i>. By scanning your resume, we are able to give you suggestions to
               <strong> enhance</strong> your application chances, giving you the
               <strong> reassurance</strong> and push to commit to any application.
             </p>
@@ -31,7 +31,7 @@ function Welcome() {
 
           {/* Right Box: Why We Made This Project */}
           <div className='flex-1 bg-customBeige text-customDarkGreen rounded-lg shadow-2xl p-6 min-h-[350px]'>
-            <h2 className='text-center font-bold italic text-3xl text-customDarkGreen mb-4'>
+            <h2 className='text-center font-bold text-3xl text-customDarkGreen mb-4'>
               Why We Made This Project
             </h2>
             <p>

@@ -59,6 +59,7 @@ export default {
         customMediumGreen: '#588157',
         customMediumLightGreen: '#a3b18a',
         customOtherGreen: "#a4ac86",
+        borderGreen: "#656d4a",
       },
       borderRadius: {
         lg: "var(--radius)",

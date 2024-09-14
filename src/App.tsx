@@ -7,8 +7,8 @@
 // import { api } from "../convex/_generated/api";
 
 import React from "react";
-import Navbar from "./components/navbar";
-import Hero from "./components/hero";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
 import FileUpload from "./components/FileUpload";
 import Welcome from "./components/Welcome";
 
