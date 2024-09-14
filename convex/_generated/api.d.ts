@@ -16,6 +16,7 @@ import type {
   FunctionReference,
 } from "convex/server";
 import type * as auth from "../auth.js";
+import type * as functions_uploadFile from "../functions/uploadFile.js";
 import type * as http from "../http.js";
 
 /**
@@ -28,6 +29,7 @@ import type * as http from "../http.js";
  */
 declare const fullApi: ApiFromModules<{
   auth: typeof auth;
+  "functions/uploadFile": typeof functions_uploadFile;
   http: typeof http;
 }>;
 export declare const api: FilterApi<
