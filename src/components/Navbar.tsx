@@ -2,17 +2,17 @@ import React from 'react';
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="bg-customGreen p-4">
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className="bg-customGreen p-3 border-b-2 border-customBeige">
+      <div className="container mx-auto flex justify-between items-center ">
         
         {/* Logo */}
         <img className='h-12' src="download.jpg" alt="Logo" />
 
         {/* Navbar Links */}
         <div className="hidden md:flex space-x-8">
-          <a href="#" className="text-gray-300 hover:text-white italic">Welcome</a>
-          <a href="#" className="text-gray-300 hover:text-white italic">About</a>
-          <a href="#" className='text-gray-300 hover:text-white italic'>Mission</a>
+          <a href="#" className="text-customBeige hover:text-white italic">Welcome</a>
+          <a href="#" className="text-customBeige hover:text-white italic">About</a>
+          <a href="#" className='text-customBeige hover:text-white italic'>Mission</a>
         </div>
 
         {/* Contact Button */}
