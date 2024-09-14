@@ -21,7 +21,7 @@ const FileUpload: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col items-center bg-customDarkGreen">
-      <label htmlFor="file" className="mb-4 text-xs text-customBeige italic">Upload your resume (PDF, Word):</label>
+      <label htmlFor="file" className="mb-4 mt-4 text-xs text-customBeige italic">Upload your resume (PDF, Word):</label>
       <input 
         type="file" 
         id="file"
@@ -31,13 +31,13 @@ const FileUpload: React.FC = () => {
       />
       <button 
         type="submit" 
-        className="bg-blue-500 text-white py-2 px-4 rounded">
+        className="bg-customBeige text-customGreen py-2 px-4 rounded-xl font-bold">
         Submit
       </button>
 
       {/* Display selected file name */}
       {selectedFile && (
-        <p className="mt-4 text-gray-700">Selected file: {selectedFile.name}</p>
+        <p className="mt-4 text-customBeige">Selected file: {selectedFile.name}</p>
       )}
     </form>
   );
