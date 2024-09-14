@@ -7,9 +7,10 @@
 // import { api } from "../convex/_generated/api";
 
 import React from "react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
+import Navbar from "./components/navbar";
+import Hero from "./components/hero";
 import FileUpload from "./components/FileUpload";
+import Welcome from "./components/Welcome";
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
       <Navbar />
       <Hero />
       <FileUpload />
+      <Welcome/>
     </div>
   );
 }

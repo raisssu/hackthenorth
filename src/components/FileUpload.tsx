@@ -20,8 +20,8 @@ const FileUpload: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col items-center">
-      <label htmlFor="file" className="mb-2">Upload your resume (PDF, Word):</label>
+    <form onSubmit={handleSubmit} className="flex flex-col items-center bg-customDarkGreen">
+      <label htmlFor="file" className="mb-4 text-xs text-customBeige italic">Upload your resume (PDF, Word):</label>
       <input 
         type="file" 
         id="file"
