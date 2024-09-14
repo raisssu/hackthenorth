@@ -10,12 +10,14 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import FileUpload from "./components/FileUpload";
+import Welcome from "./components/Welcome";
 
 const App: React.FC = () => {
   return (
     <div>
       <Navbar />
       <Hero />
+      <Welcome/>
       <FileUpload />
     </div>
   );

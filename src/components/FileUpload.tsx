@@ -50,27 +50,31 @@ const FileUpload: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col items-center">
-      <label htmlFor="file" className="mb-2">Upload your resume (PDF, Word):</label>
-      <input 
-        type="file" 
-        id="file"
-        accept=".pdf,.doc,.docx,.txt"  // Accept only PDF, Word, and text files
-        onChange={handleFileChange} 
-        className="mb-4"
-      />
-      <button 
-        type="submit" 
-        className="bg-blue-500 text-white py-2 px-4 rounded">
-        Submit
-      </button>
+    <div className="flex flex-col items-center bg-customOtherGreen h-[250px] justify-center">
+      {/* Bubble effect for form */}
+      <form onSubmit={handleSubmit} className="bg-customLightGreen text-customDarkGreen rounded-2xl shadow-lg p-6 max-w-md w-full">
+        <label htmlFor="file" className="mb-4 text-sm text-customGreen italic">Upload your resume (PDF, Word):</label>
+        <input 
+          type="file" 
+          id="file"
+          accept=".pdf,.doc,.docx,.txt"  // Accept only PDF, Word, and text files
+          onChange={handleFileChange} 
+          className="mb-4 w-full border border-customBeige rounded-lg p-2"
+        />
+        <button 
+          type="submit" 
+          className="bg-customBeige text-customDarkGreen py-2 px-4 rounded-xl font-bold w-full">
+          Submit
+        </button>
 
-      {/* Display selected file name */}
-      {selectedFile && (
-        <p className="mt-4 text-gray-700">Selected file: {selectedFile.name}</p>
-      )}
-    </form>
+        {/* Display selected file name */}
+        {selectedFile && (
+          <p className="mt-4 text-customBeige">Selected file: {selectedFile.name}</p>
+        )}
+      </form>
+    </div>
   );
 }
 
 export default FileUpload;
+

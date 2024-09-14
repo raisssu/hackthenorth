@@ -54,6 +54,12 @@ export default {
         },
         customGreen: '#606c38',
         customBeige: '#fefae0',
+        customDarkGreen:'#283618',
+        customLightGreen: '#ccd5ae',
+        customMediumGreen: '#588157',
+        customMediumLightGreen: '#a3b18a',
+        customOtherGreen: "#a4ac86",
+        borderGreen: "#656d4a",
       },
       borderRadius: {
         lg: "var(--radius)",
