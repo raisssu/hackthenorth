@@ -22,7 +22,7 @@ function Welcome() {
               Mission
             </h2>
             <p className='text-center'>
-              <i>Hack the Resume</i> was made to help people around the world
+              <i>Hack the Resume</i> was made to help people around the world 
               <i>hack into the workforce</i>. By scanning your resume, we are able to give you suggestions to
               <strong> enhance</strong> your application chances, giving you the
               <strong> reassurance</strong> and push to commit to any application.
