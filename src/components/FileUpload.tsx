@@ -1,22 +1,52 @@
 import React, { useState } from 'react';
+// import uploadFile from "../../convex/functions/uploadFile";
+// import { FunctionReference } from "convex/server";
+// import { useMutation } from "convex/react";
+// import { api } from "../../convex/_generated/api";
+
 
 const FileUpload: React.FC = () => {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);;
+  
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
     setSelectedFile(file);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+
+
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (!selectedFile) {
+  //     alert("Please select a file first.");
+  //     return;
+  //   }
+  async function handleSubmit (e: React.FormEvent) {
     e.preventDefault();
     if (!selectedFile) {
       alert("Please select a file first.");
       return;
     }
+    
+    const formData = new FormData();
+    formData.append('file', selectedFile );
+    
+    try{
+      const result = await fetch("http://localhost:5173", {
+        method: 'POST',
+        body: formData,
+      })
+      const data = await result.text;
+      console.log(data);
+    }
+    catch (error){
+      console.error(error);
+    }
+    
 
     // Just log the file name for now as you're working on the front end
-    console.log("Selected file:", selectedFile.name);
+    // console.log("Selected file:", selectedFile.name);
+    
   };
 
   return (
