@@ -6,25 +6,19 @@ import { UserMenu } from "@/components/UserMenu";
 import { Authenticated, Unauthenticated, useQuery } from "convex/react";
 import { api } from "../convex/_generated/api";
 
-export default function App() {
-  const user = useQuery(api.users.viewer);
+import React from "react";
+import Navbar from "./components/navbar";
+import Hero from "./components/hero";
+import FileUpload from "./components/FileUpload";
+
+const App: React.FC = () => {
   return (
-    <Layout
-      menu={
-        <Authenticated>
-          <UserMenu>{user?.name ?? user?.email}</UserMenu>
-        </Authenticated>
-      }
-    >
-      <>
-        <Authenticated>
-          <ChatIntro />
-          <Chat viewer={(user ?? {})._id!} />
-        </Authenticated>
-        <Unauthenticated>
-          <SignInForm />
-        </Unauthenticated>
-      </>
-    </Layout>
+    <div>
+      <Navbar />
+      <Hero />
+      <FileUpload />
+    </div>
   );
 }
+
+export default App;
