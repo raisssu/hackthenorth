@@ -1,4 +1,5 @@
 import React from 'react';
+import img from '/src/components/images/add_a_heading__1__480.png'
 
 const Navbar: React.FC = () => {
   return (
@@ -7,7 +8,7 @@ const Navbar: React.FC = () => {
         
         {/* Logo */}
         <div className="w-24">
-          <img className="w-full h-auto" src="/components/images/add_a_heading_1_480.png" alt="Logo" />
+          <img src={img} className="w-full h-auto object-scale-down w-5/6 h-5/6" alt="Logo" />
         </div>
 
         {/* Navbar Links */}
