@@ -1,36 +1,66 @@
-<<<<<<< HEAD
-import React, { useState } from 'react'; // Make sure to import useState
-
-=======
 
 import React, { useState } from 'react';
->>>>>>> 034058461ae69458c83cc4599c4d1364e9fbee4b
 // import uploadFile from "../../convex/functions/uploadFile";
 // import { FunctionReference } from "convex/server";
 // import { useMutation } from "convex/react";
 // import { api } from "../../convex/_generated/api";
+
+//
+
+import { CohereClient } from "cohere-ai";
+import axios from "axios"
 import pdfToText from 'react-pdftotext';
 
+
+const cohere = new CohereClient({
+  token: "ox62UMnb9zF2HS0t0LkTkyu7T0vgNZtjn5t32Hp3", // Replace with your actual Cohere API key
+});
+
+
+// const FileUpload: React.FC = () => 
+//   const [selectedFile, setSelectedFile] = useState<File | null>(null); 
+  
+//   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+//     const file = e.target.files?.[0] || null;
+//     setSelectedFile(file);
+//   };
+
+//   const handleSubmit = (e: React.FormEvent) => {
+//     e.preventDefault();
+//     if (!selectedFile) {
+//       alert("Please select a file first.");
+//       return;
+//     }
+
 const FileUpload: React.FC = () => {
-<<<<<<< HEAD
+
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-=======
+  const [isLoading, setIsLoading] = useState(false);
+
+
   var resumetext:string;
 
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);;
->>>>>>> 034058461ae69458c83cc4599c4d1364e9fbee4b
   
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
     setSelectedFile(file);
   };
 
-<<<<<<< HEAD
-  async function handleSubmit(e: React.FormEvent) {
-=======
+
+
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (!selectedFile) {
+  //     alert("Please select a file first.");
+  //     return;
+  //   }
+    
+
+
   var fileExt = selectedFile?.name.split('.').pop();
   console.log(fileExt);
   
+
   // const handleSubmit = (e: React.FormEvent) => {
   //   e.preventDefault();
   //   if (!selectedFile) {
@@ -38,50 +68,25 @@ const FileUpload: React.FC = () => {
   //     return;
   //   }
   async function handleSubmit (e: React.FormEvent) {
->>>>>>> 034058461ae69458c83cc4599c4d1364e9fbee4b
+    console.log("handling.....!")
     e.preventDefault();
     if (!selectedFile) {
       alert("Please select a file first.");
       return;
     }
     
+    // const formData = new FormData();
+    // formData.append('file', selectedFile );
   
     const formData = new FormData();
     formData.append('file', selectedFile );
 
     if (fileExt === 'pdf'){
       await pdfToText(selectedFile)
-      .then(text => {resumetext = text;});
+      .then(text1 => {resumetext = text1;});
     }
 
     
-<<<<<<< HEAD
-    const fileReader = new FileReader();
-    fileReader.onload = () => {
-      const fileContent = fileReader.result as string;
-      console.log(fileContent);
-    }
-    fileReader.readAsText(selectedFile);
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="flex flex-col items-center bg-customOtherGreen h-[250px] justify-center">
-      {/* Single wrapper for the form content */}
-      <div className="bg-customLightGreen text-customDarkGreen rounded-2xl shadow-lg p-6 max-w-md w-full">
-        <label htmlFor="file" className="mb-4 text-sm text-customBeige italic">Upload your resume (PDF, Word):</label>
-        <input 
-          type="file" 
-          id="file"
-          accept=".pdf,.doc,.docx,.txt"  // Accept only PDF, Word, and text files
-          onChange={handleFileChange} 
-          className="mb-4 w-full border border-customBeige rounded-lg p-2"
-        />
-        <button 
-          type="submit" 
-          className="bg-customBeige text-customDarkGreen py-2 px-4 rounded-xl font-bold w-full">
-          Submit
-        </button>
-=======
     // try{
     //   const result = await fetch("http://localhost:5173", {
     //     method: 'POST',
@@ -112,8 +117,64 @@ const FileUpload: React.FC = () => {
     // }
     
 
-    // Just log the file name for now as you're working on the front end
-    // console.log("Selected file:", selectedFile.name);
+    
+    try {
+
+      // Read file content
+      // const fileContent = await selectedFile.text();
+      //const ph = "abc";
+      console.log("trying!....");
+
+      // Send to Cohere API
+      setIsLoading(true);
+      console.log(isLoading)
+
+      const response = await cohere.chat({
+        message: `Please provide feedback and suggestions on the resume using short and simple bullet points, without rewriting the resume:\n\n${resumetext} `,
+        model: "command", // or any other suitable model
+        temperature: 0.3,
+      });
+
+      const marks = await cohere.chat({
+        message: `Mark the resume above in terms of profession, experience, collaboration, 
+        perseverance, leadership. Please give five seperate marks in the same line separated by one space`,
+        model: "command", // or any other suitable model
+        temperature: 0.3,
+      });
+
+      setIsLoading(false);
+
+      // Set the revision
+      console.log(response.text);
+      // Download response.text as a Word document
+      // Create a Blob with plain text content
+      
+
+      // Create a download link
+      const blob = new Blob([response.text], { type: 'text/plain' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      a.download = 'revised_resume.txt';
+
+      // Trigger download
+      document.body.appendChild(a);
+      a.click();
+
+      // Clean up
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+
+      // Inform the user
+      //alert('Your revised resume has been downloaded as a text file.');
+      
+    } 
+    catch (error) {
+      console.error("Error processing file:", error);
+      alert("An error occurred while processing the file.");
+      setIsLoading(false);
+    }
     
   };
 
@@ -132,16 +193,21 @@ const FileUpload: React.FC = () => {
         className="bg-blue-500 text-white py-2 px-4 rounded">
         Submit
       </button>
->>>>>>> 034058461ae69458c83cc4599c4d1364e9fbee4b
 
-        {/* Display selected file name */}
-        {selectedFile && (
-          <p className="mt-4 text-customBeige">Selected file: {selectedFile.name}</p>
-        )}
-      </div>
+      {/* Display selected file name */}
+      {selectedFile && (
+        <p className="mt-4 text-gray-700">Selected file: {selectedFile.name}</p>
+      )}
+      {isLoading && (
+        <div className="fixed inset-0 bg-white bg-opacity-10 flex items-center justify-center z-50">
+          <div className="text-center">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900 mb-4"></div>
+            <p className="text-lg font-semibold text-gray-700">Processing your resume...</p>
+          </div>
+        </div>
+      )}
     </form>
   );
 }
 
 export default FileUpload;
-
