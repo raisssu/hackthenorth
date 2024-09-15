@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 //
 
 import { CohereClient } from "cohere-ai";
-import axios from "axios"
+//import axios from "axios"
 import pdfToText from 'react-pdftotext';
 
 
@@ -134,12 +134,12 @@ const FileUpload: React.FC = () => {
         temperature: 0.3,
       });
 
-      const marks = await cohere.chat({
-        message: `Mark the resume above in terms of profession, experience, collaboration, 
-        perseverance, leadership. Please give five seperate marks in the same line separated by one space`,
-        model: "command", // or any other suitable model
-        temperature: 0.3,
-      });
+      // const marks = await cohere.chat({
+      //   message: `Mark the resume above in terms of profession, experience, collaboration, 
+      //   perseverance, leadership. Please give five seperate marks in the same line separated by one space`,
+      //   model: "command", // or any other suitable model
+      //   temperature: 0.3,
+      // });
 
       setIsLoading(false);
 
