@@ -31,7 +31,6 @@ const cohere = new CohereClient({
 //       alert("Please select a file first.");
 //       return;
 //     }
-
 const FileUpload: React.FC = () => {
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -179,35 +178,40 @@ const FileUpload: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col items-center">
-      <label htmlFor="file" className="mb-2">Upload your resume (PDF, Word, txt):</label>
-      <input 
-        type="file" 
-        id="file"
-        accept=".pdf,.doc,.docx,.txt"  // Accept only PDF, Word, and text files
-        onChange={handleFileChange} 
-        className="mb-4"
-      />
-      <button 
-        type="submit" 
-        className="bg-blue-500 text-white py-2 px-4 rounded">
-        Submit
-      </button>
+    <form onSubmit={handleSubmit} className="flex flex-col items-center bg-customMediumLightGreen min-h-screen py-8">
+      {/* Wrapper for the file submit portion with a square border */}
+      <div className="border-2 border-gray-400 rounded-lg p-6 bg-customBeige flex flex-col items-center w-80">
+        <label htmlFor="file" className="mb-2 text-customDarkGreen">Upload your resume (PDF, txt):</label>
+        <input 
+          type="file" 
+          id="file"
+          accept=".pdf,.txt"  // Accept only PDF and text files
+          onChange={handleFileChange} 
+          className="mb-4 text-customDarkGreen justify-center"
+        />
+        <button 
+          type="submit" 
+          className="bg-customGreen text-customBeige py-2 px-4 rounded">
+          Submit
+        </button>
 
-      {/* Display selected file name */}
-      {selectedFile && (
-        <p className="mt-4 text-gray-700">Selected file: {selectedFile.name}</p>
-      )}
+        {/* Display selected file name */}
+        {selectedFile && (
+          <p className="mt-4 text-customDarkGreen">Selected file: {selectedFile.name}</p>
+        )}
+      </div>
+
       {isLoading && (
-        <div className="fixed inset-0 bg-white bg-opacity-10 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-customBeige bg-opacity-10 flex items-center justify-center z-50">
           <div className="text-center">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900 mb-4"></div>
-            <p className="text-lg font-semibold text-gray-700">Processing your resume...</p>
+            <p className="text-lg font-semibold text-customBeige">Processing your resume...</p>
           </div>
         </div>
       )}
     </form>
-  );
+    );
+  
 }
 
 export default FileUpload;
