@@ -1,11 +1,15 @@
+
 import React, { useState } from 'react';
 // import uploadFile from "../../convex/functions/uploadFile";
 // import { FunctionReference } from "convex/server";
 // import { useMutation } from "convex/react";
 // import { api } from "../../convex/_generated/api";
+import pdfToText from 'react-pdftotext';
 
 
 const FileUpload: React.FC = () => {
+  var resumetext:string;
+
   const [selectedFile, setSelectedFile] = useState<File | null>(null);;
   
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,8 +17,9 @@ const FileUpload: React.FC = () => {
     setSelectedFile(file);
   };
 
-
-
+  var fileExt = selectedFile?.name.split('.').pop();
+  console.log(fileExt);
+  
   // const handleSubmit = (e: React.FormEvent) => {
   //   e.preventDefault();
   //   if (!selectedFile) {
@@ -28,21 +33,38 @@ const FileUpload: React.FC = () => {
       return;
     }
     
+  
     const formData = new FormData();
     formData.append('file', selectedFile );
+
+    if (fileExt === 'pdf'){
+      await pdfToText(selectedFile)
+      .then(text => {resumetext = text;});
+    }
+
     
     // try{
     //   const result = await fetch("http://localhost:5173", {
     //     method: 'POST',
     //     body: formData,
     //   })
+    
+    if(fileExt === "txt"){
       const fileReader = new FileReader();
+    
       fileReader.onload = () => {
-        const fileContent = fileReader.result as string;
-        console.log(fileContent);
-  
+        var a = fileReader.result as string;
+        //console.log(fileContent);
+        resumetext = a;
+        console.log(resumetext);
       }
+      
       fileReader.readAsText(selectedFile);
+      
+    }
+    
+    console.log(resumetext);
+
       // const data = await result.text;
       // console.log(data);
     // }
@@ -58,7 +80,7 @@ const FileUpload: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col items-center">
-      <label htmlFor="file" className="mb-2">Upload your resume (PDF, Word):</label>
+      <label htmlFor="file" className="mb-2">Upload your resume (PDF, Word, txt):</label>
       <input 
         type="file" 
         id="file"
