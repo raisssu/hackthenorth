@@ -35,7 +35,7 @@ function Welcome() {
               Why We Made This Project
             </h2>
             <p>
-              We created this project to bridge the gap between job seekers and employers by offering tools that improve the quality of resumes, making the job application process easier and more effective.
+              We created this project to bridge the gap between job seekers and employers by offering tools that improve the quality of resumes, making the job application process easier and more effectivve. 
             </p>
           </div>
         </div>
